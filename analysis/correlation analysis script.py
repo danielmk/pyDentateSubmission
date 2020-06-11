@@ -22,8 +22,7 @@ def correlation_analysis(a,b):      #with 2 input arrays, returns array of row-w
         c = scipy.stats.pearsonr(a2,b2)
         d = c[0]
         alist.append(d)
-    matrix = np.array(alist)
-    return matrix
+    return np.array(alist)
 
 def correlation_average (a):            # with one input array returns the average of that array ignoring 'nan'
         # g = np.nan_to_num(a)
@@ -44,17 +43,16 @@ def filenames_list(a): #returns a lits with all the filenames. a is the director
 def directory_correlation(f):                   #takes file list from filenames_list function.
     alist = []
     m = 0
-    for n in range(len(f)):             
-        for m in range(len(f)):         
-            my_data_a = np.load(f[n])
-            my_data_b = np.load(f[m])
+    for item_ in f:         
+        for item in f: 
+            my_data_a = np.load(item_)
+            my_data_b = np.load(item)
             a = my_data_a['arr_0']
             b = my_data_b['arr_0']
             c = correlation_average(correlation_analysis(a,b))
             alist.append(c)
     x = np.array(alist)
-    y = np.reshape(x, ((len(f)),(len(f))))
-    return y
+    return np.reshape(x, ((len(f)),(len(f))))
 
 
 a = "Z:\\pyDentate\\pyDentateData\\pattern_separation_data_local_input_revised\\seed10000\\input_patterns\\"

@@ -5,6 +5,7 @@ Created on Sun May 20 11:35:03 2018
 @author: DanielM
 """
 
+
 import os
 import numpy as np
 import shelve
@@ -16,7 +17,14 @@ stim_dtp = stim_delay / dt
 
 data_path = "C:\\Users\\Daniel\\pyDentateData\\tuning\\revised\\frequency_inhibition_data\\"
 save_path = data_path
-data_files = [f for f in os.listdir(data_path) if os.path.isfile(os.path.join(data_path, f)) and '.pydd' in f and not '.npz' in f]
+data_files = [
+    f
+    for f in os.listdir(data_path)
+    if os.path.isfile(os.path.join(data_path, f))
+    and '.pydd' in f
+    and '.npz' not in f
+]
+
 
 for x in data_files:
     interval = int(x.split('_')[7])

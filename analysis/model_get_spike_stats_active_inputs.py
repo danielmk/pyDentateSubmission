@@ -16,7 +16,15 @@ import pdb
 #directory = "Y:\\DanielM\\023_Dentate Gyrus Model\\paradigm_spatial-inhibition\\"
 #Dropbox
 def get_spike_stats(data_path):
-    data_files = [f for f in os.listdir(data_path) if os.path.isfile(os.path.join(data_path, f)) and '.npz' in f and not 'norm' in f and not 'trifilt' in f]
+    data_files = [
+        f
+        for f in os.listdir(data_path)
+        if os.path.isfile(os.path.join(data_path, f))
+        and '.npz' in f
+        and 'norm' not in f
+        and 'trifilt' not in f
+    ]
+
     data_files.sort()
 
     # Get to BasketCell Connection

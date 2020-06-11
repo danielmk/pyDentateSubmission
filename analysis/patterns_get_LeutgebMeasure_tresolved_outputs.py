@@ -15,7 +15,15 @@ import pdb
 def similarity_measure_leutgeb_output_tresolved_directory(data_path, len_bins):
     # Setup some parameters given by paradigm_frequency_inhibition.py
     save_path = data_path
-    data_files = [f for f in os.listdir(data_path) if os.path.isfile(os.path.join(data_path, f)) and '.npz' in f and 'spike_data' in f and not 'convolved' in f]
+    data_files = [
+        f
+        for f in os.listdir(data_path)
+        if os.path.isfile(os.path.join(data_path, f))
+        and '.npz' in f
+        and 'spike_data' in f
+        and 'convolved' not in f
+    ]
+
     data_files.sort()
 
     data_files = data_files[0:25]

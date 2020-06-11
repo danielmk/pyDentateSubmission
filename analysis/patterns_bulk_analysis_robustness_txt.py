@@ -5,11 +5,12 @@ Spyder Editor
 This is a temporary script file.
 """
 
+
 import os
 import numpy as np
 
 parent = "C:\\Users\\Daniel\\pyDentateData\\robustness\\frequencies\\"
-all_files = [x for x in os.listdir(parent) if not "figure" in x if '.npz' in x]
+all_files = [x for x in os.listdir(parent) if "figure" not in x if '.npz' in x]
 all_input_data = [np.load(parent + x)['input_corrs'] for x in all_files]
 all_output_data = [np.load(parent + x)['output_corrs'] for x in all_files]
 
@@ -64,12 +65,10 @@ idx_map = {'nw-seed': 10000,
 
 # Split the files by frequency
 freqs = np.array([5,10,15,20,25,30,35,40,45,50,55,60,70,80,90,100])
-freqs_dict = {}
-for x in freqs:
-    freqs_dict[str(x)] = subtracted_Rs_mean[np.argwhere(parsed_files[:,2] ==x)]
-    
-
-
+freqs_dict = {
+    str(x): subtracted_Rs_mean[np.argwhere(parsed_files[:, 2] == x)]
+    for x in freqs
+}
 
 """
 for root, dirs, files in os.walk(parent):

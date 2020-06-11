@@ -14,7 +14,14 @@ from tempfile import TemporaryFile
 
 def get_binary_traces(data_path):
     save_path = data_path
-    data_files = [f for f in os.listdir(data_path) if os.path.isfile(os.path.join(data_path, f)) and '.pydd' in f and not '.npz' in f]
+    data_files = [
+        f
+        for f in os.listdir(data_path)
+        if os.path.isfile(os.path.join(data_path, f))
+        and '.pydd' in f
+        and '.npz' not in f
+    ]
+
 
     for x in data_files:
         if not os.path.isfile(data_path + '\\' + x +  '_spike_data.npz'):

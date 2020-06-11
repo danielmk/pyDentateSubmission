@@ -16,7 +16,17 @@ import pdb
 def similarity_measure_overlap_directory(data_path):
     # Setup some parameters given by paradigm_frequency_inhibition.py
     save_path = data_path
-    data_files = [f for f in os.listdir(data_path) if os.path.isfile(os.path.join(data_path, f)) and '.npz' in f and 'input_patterns' in f and not 'norm' in f and not 'convolved' in f and not 'trifilt' in f]
+    data_files = [
+        f
+        for f in os.listdir(data_path)
+        if os.path.isfile(os.path.join(data_path, f))
+        and '.npz' in f
+        and 'input_patterns' in f
+        and 'norm' not in f
+        and 'convolved' not in f
+        and 'trifilt' not in f
+    ]
+
     data_files.sort()
 
     data_files = data_files[0:25]

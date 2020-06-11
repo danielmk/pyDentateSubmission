@@ -42,7 +42,15 @@ def get_perc_active_n_aps(file_name):
 if __name__ == '__main__':
     data_path = "Z:\\pyDentate\\pyDentateData\\pattern_separation_data_local_input_revised\\seed10000\\input_patterns_seed_10000\\"
     # file_name = "net_tunedrev.TunedNetwork_run_scale_000_1000.pydd"
-    data_files = [f for f in os.listdir(data_path) if os.path.isfile(os.path.join(data_path, f)) and '.npz' in f and not 'norm' in f and not 'trifilt' in f]
+    data_files = [
+        f
+        for f in os.listdir(data_path)
+        if os.path.isfile(os.path.join(data_path, f))
+        and '.npz' in f
+        and 'norm' not in f
+        and 'trifilt' not in f
+    ]
+
     perc_active_list = []
     avg_n_aps_list = []
     for x in data_files:
@@ -50,10 +58,10 @@ if __name__ == '__main__':
         perc_active, n_cells = get_perc_active_n_aps(data_path+x)
         perc_active_list.append(perc_active)
         avg_n_aps_list.append(n_cells)
-    
+
     np.savetxt(data_path + "perc_active_cells.txt", np.array(perc_active_list), delimiter='\t')
     np.savetxt(data_path + "avg_n_aps.txt", np.array(avg_n_aps_list), delimiter='\t')
-    
+
 """
 data = shelve.open(data_path + file_name)
 perc_active_gcs_list = []

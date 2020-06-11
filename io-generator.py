@@ -5,6 +5,7 @@ Created on Mon Mar 05 13:41:23 2018
 @author: DanielM
 """
 
+
 from neuron import h, gui  # gui necessary for some parameters to h namespace
 import numpy as np
 import net_tunedrev
@@ -66,6 +67,7 @@ for x in dll_files:
 print("DLL loaded from: " + dll_dir)
 h.nrn_load_dll(dll_dir)
 
+dt = 0.1
 # Start the runs of the model
 for input_seed in input_seeds:
     # Seed the numpy random number generator for replication
@@ -117,7 +119,6 @@ for input_seed in input_seeds:
     # Run the model
     """Initialization for -2000 to -100"""
     h.cvode.active(0)
-    dt = 0.1
     h.steps_per_ms = 1.0/dt
     h.finitialize(-60)
     h.t = -2000
@@ -151,14 +152,14 @@ for input_seed in input_seeds:
             ap_binary_array[idx,spike_idc] = 1
 
     np.savez(savedir + '\\' + 'output-' + save_file_name, ap_binary_array)
-    
+
     gc_inputs = np.zeros((2000,int(300/dt)),dtype=np.uint8)
 
     for idx_pp, pp in enumerate(PP_to_GCs):
         for gc in pp:
             for times in temporal_patterns[idx_pp]:
                 gc_inputs[gc][int(times/dt)] = gc_inputs[gc][int(times/dt)] + 1
-    
+
     np.savez(savedir + '\\' + 'input-' + save_file_name, gc_inputs)
 
     #nw.shelve_network(savedir, tuned_save_file_name)

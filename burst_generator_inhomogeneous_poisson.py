@@ -29,7 +29,7 @@ def inhom_poiss_30Hz():
                                         sampling_period=sampling_interval)
 
     spike_trains = []
-    for x in range(400):
+    for _ in range(400):
         curr_train = stg.inhomogeneous_poisson_process(rate_profile_as_asig)
         # We have to make sure that there is sufficient space between spikes.
         # If there is not, we move the next spike by 0.1ms
@@ -68,7 +68,7 @@ def inhom_poiss(rate=10, max_rate=100):
                                         sampling_period=sampling_interval)
 
     spike_trains = []
-    for x in range(400):
+    for _ in range(400):
         curr_train = stg.inhomogeneous_poisson_process(rate_profile_as_asig)
         # We have to make sure that there is sufficient space between spikes.
         # If there is not, we move the next spike by 0.1ms
@@ -105,7 +105,7 @@ def inhom_poiss_io(rate=10, max_rate=100):
                                         sampling_period=sampling_interval)
 
     spike_trains = []
-    for x in range(24):
+    for _ in range(24):
         curr_train = stg.inhomogeneous_poisson_process(rate_profile_as_asig)
         # We have to make sure that there is sufficient space between spikes.
         # If there is not, we move the next spike by 0.1ms
@@ -131,7 +131,7 @@ def hom_poiss(rate):
     rate = rate * pq.Hz
 
     spike_trains = []
-    for x in range(400):
+    for _ in range(400):
         curr_train = stg.homogeneous_poisson_process(rate, 0.01*pq.s, 0.51 *pq.s)
         # We have to make sure that there is sufficient space between spikes.
         # If there is not, we move the next spike by 0.1ms
