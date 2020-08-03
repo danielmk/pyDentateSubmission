@@ -1,6 +1,6 @@
 # pyDentateeLife2020
 
-This is a legacy repository dedicated to the reproducibility of our findings from Braganza et al. 2020 that were generated with pyDentate. If you want to use or build on pyDentate it is highly recommended to use the [active pyDentate repository](https://github.com/danielmk/pyDentate).
+This is a legacy repository dedicated to the reproducibility of our findings from [Braganza et al. 2020](https://elifesciences.org/articles/53148) that were generated with pyDentate. If you want to use or build on pyDentate it is highly recommended to use the [active pyDentate repository](https://github.com/danielmk/pyDentate).
 
 # Running pyDentateeLife2020 legacy version
 
